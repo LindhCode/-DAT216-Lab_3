@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lab2/widgets/ingridient_control.dart';
 
 class MainView extends StatelessWidget {
   const MainView({super.key});
@@ -27,7 +28,17 @@ Widget _controlPanel(BuildContext context, {double width = 320}) {
             textAlign: TextAlign.left,
           ),
         ),
+        Row(
+          children: [
+            Text(
+            "Ingrediens",
+            textAlign: TextAlign.left,
+            ),
+            
+            IngredientControl()
+          ],)
       ],
+      
     ),
   );
 }

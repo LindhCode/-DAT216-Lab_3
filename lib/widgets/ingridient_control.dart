@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:lab2/util/main_ingredient.dart';
+
 class IngredientControl extends StatelessWidget {
   const IngredientControl({super.key});
 
@@ -13,9 +16,9 @@ class IngredientControl extends StatelessWidget {
       initialSelection: labels[0],  // Starts with the first element selected
       dropdownMenuEntries: [
         for (int i = 0; i < labels.length; i++)
-           DropdownMenuEntry(
-           value: labels[i],
-           label: labels[i],
+          DropdownMenuEntry(
+          value: labels[i],
+          label: labels[i],
         ),
       ],
       onSelected: (value){},
