@@ -19,7 +19,7 @@ Widget _controlPanel(BuildContext context, {double width = 320}) {
       crossAxisAlignment: CrossAxisAlignment.center, 
       children: [
         const Text(
-          'data',
+          'AlfAx Receptsök',
         ),
         const Align(
           alignment: Alignment.centerLeft,
