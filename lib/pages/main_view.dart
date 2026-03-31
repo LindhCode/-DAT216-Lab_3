@@ -24,7 +24,7 @@ Widget _controlPanel(BuildContext context, {double width = 320}) {
         const Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            "Hej jag heter alfred",
+            "Hitta ett recept som passar genom att ändra inställningarna nedan",
             textAlign: TextAlign.left,
           ),
         ),
