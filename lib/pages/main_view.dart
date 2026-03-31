@@ -10,13 +10,32 @@ class MainView extends StatelessWidget {
     );
   }
 
-
-Widget _controlPanel(context, {double width = 320}) {
-  return Placeholder();
+Widget _controlPanel(BuildContext context, {double width = 320}) {
+  return Container(
+    width: width,
+    color: const Color.fromARGB(255, 193, 210, 218),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center, 
+      children: [
+        const Text(
+          'data',
+        ),
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "Hej jag heter alfred",
+            textAlign: TextAlign.left,
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 Widget _recipeArea(context) {
-  return Expanded(child: Placeholder());
+   return Expanded(
+      child: Container(color: const Color.fromARGB(255, 204, 216, 176)),
+   );
 }
 
 }
