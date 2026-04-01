@@ -10,7 +10,7 @@ class DifficulyControl extends StatefulWidget {
 
 class _DifficulyControlState extends State<DifficulyControl> {
   String _difficulty = Difficulty.labels[0];
-@override
+  @override
   Widget build(BuildContext context) {
     return RadioGroup<String>(
       groupValue: _difficulty,
