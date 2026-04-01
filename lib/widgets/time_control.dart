@@ -25,7 +25,7 @@ class _TimeControlState extends State<TimeControl> {
             });
           },
         ),
-        Text('${_price.round()} kr'),
+        Text('${_price.round()} min'),
       ],
     );
   }
