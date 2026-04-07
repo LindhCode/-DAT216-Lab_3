@@ -7,8 +7,10 @@ void main() {
   runApp(ChangeNotifierProvider(
     create: (context) => RecipeHandler(),
     child: const MyApp(),
+    
     ));
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
