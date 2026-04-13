@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Common spacing
@@ -10,7 +11,9 @@ class AppTheme {
   static const double paddingHuge = 32.0;
 
   // App color
-  //static ColorScheme colorScheme = ColorScheme.fromSeed(
-           //seedColor: Colors.green,     // Välj något som känns bra
-  //);
+  static ColorScheme colorScheme = ColorScheme.fromSeed(
+    seedColor: const Color.fromARGB(255, 163, 193, 164),     // Välj något som känns bra
+  );
+
+  static TextTheme textTheme = GoogleFonts.nunitoTextTheme();
 }
