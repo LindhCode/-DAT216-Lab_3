@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
+import 'package:lab2/ui_controller.dart';
 import 'package:lab2/widgets/recipe_list_item.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,7 @@ class RecipeList extends StatelessWidget {
 @override
 Widget build(BuildContext context) {
   var recipeHandler = context.watch<RecipeHandler>();
-  //var uiController = Provider.of<UIController>(context, listen: false);
+  var uiController = Provider.of<UIController>(context, listen: false);
   var recipes = recipeHandler.bestMatches;
 
   List<Widget> items = [];
@@ -20,7 +21,7 @@ Widget build(BuildContext context) {
       RecipeListItem(
         recipe,
         onTap: () {
-          //uiController.selectRecipe(recipe);
+          uiController.selectRecipe(recipe);
         },
       ),
     );

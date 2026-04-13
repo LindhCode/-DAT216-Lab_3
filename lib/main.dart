@@ -4,11 +4,15 @@ import 'package:lab2/pages/main_view.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => RecipeHandler(),
-    child: const MyApp(),
-    
-    ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => RecipeHandler()),
+        ChangeNotifierProvider(create: (context) => UIController()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 
