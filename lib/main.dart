@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Receptsök',
       theme: ThemeData(
         colorScheme: AppTheme.colorScheme,
-        textTheme: AppTheme.textTheme,
+        textTheme: GoogleFonts.nunitoTextTheme(),
       ),
       home: MainView(),
     );
