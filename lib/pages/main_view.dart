@@ -37,20 +37,8 @@ class MainView extends StatelessWidget {
           ),
           Column(
             children: [
-              SizedBox(height: 15),
-              Row(
-                children: [
-                  Text("Ingrediens", textAlign: TextAlign.left),
-                  IngredientControl(),
-                ],
-              ),
-              Row(
-                children: [
-                  Text("Kök", textAlign: TextAlign.left),
-                  KitchenControl(),
-                ],
-              ),
-              SizedBox(height: 15),
+              IngredientControl(),
+              KitchenControl(),
             ],
           ),
           Column(
