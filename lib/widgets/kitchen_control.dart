@@ -12,6 +12,7 @@ class KitchenControl extends StatelessWidget {
   Widget build(BuildContext context) {
 
     const labels = Cuisine.labels;
+    var icons = Cuisine.flags;
     var recipeHandler = Provider.of<RecipeHandler>(context, listen: false);
 
     return Row(
@@ -29,6 +30,7 @@ class KitchenControl extends StatelessWidget {
               DropdownMenuEntry(
                 value: labels[i],
                 label: labels[i],
+                leadingIcon: icons[i],
               ),
             ],
             onSelected: (value){

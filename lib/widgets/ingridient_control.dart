@@ -12,6 +12,7 @@ class IngredientControl extends StatelessWidget {
     var recipeHandler = Provider.of<RecipeHandler>(context, listen: false);
 
     const labels = MainIngredient.labels;
+    var icons = MainIngredient.icons;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -28,6 +29,7 @@ class IngredientControl extends StatelessWidget {
               DropdownMenuEntry(
                 value: labels[i],
                 label: labels[i],
+                leadingIcon: icons[i],
               ),
             ],
             onSelected: (value){
