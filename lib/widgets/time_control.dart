@@ -39,7 +39,7 @@ class _TimeControlState extends State<TimeControl> {
               SizedBox(width: AppTheme.paddingSmall),
               Padding(
                 padding: const EdgeInsets.only(right: AppTheme.paddingLarge),
-                child: Text('${_price.round()} kr'),
+                child: Text('${_price.round()} min'),
               ),
             ],
         ),
