@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:lab2/app_theme.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingridient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
@@ -17,9 +18,10 @@ class ControlPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       width: width,
-      color: const Color.fromARGB(255, 193, 210, 218),
+      color: const Color.fromARGB(255, 248, 249, 245),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -39,17 +41,17 @@ class ControlPanel extends StatelessWidget {
           ),
           Column(
             children: const [
-              SizedBox(child: Text("Svårighetsgrad")),
+              SizedBox(child: Text("Svårighetsgrad", style: AppTheme.smallHeading,)),
               DifficulyControl(),
             ],
           ),
           Column(
             children: const [
-              SizedBox(height: 15),
-              Text("Maxpris"),
+              SizedBox(height: AppTheme.paddingMediumSmall),
+              Text("Maxpris", style: AppTheme.smallHeading,),
               PriceControl(),
-              SizedBox(height: 15),
-              Text("Maxtid"),
+              SizedBox(height: AppTheme.paddingMediumSmall),
+              Text("Maxtid", style: AppTheme.smallHeading,),
               TimeControl(),
             ],
           ),

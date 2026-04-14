@@ -12,10 +12,16 @@ class AppTheme {
 
  // App color
   static ColorScheme colorScheme = ColorScheme.fromSeed(
-           seedColor: Colors.green,     // Välj något som känns bra
+    seedColor: Colors.green,     // Välj något som känns bra
   );
 
   static TextTheme textTheme = GoogleFonts.nunitoTextTheme();
+
+  static const TextStyle smallHeading = TextStyle(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  letterSpacing: 0.15,
+  );
 
   static const TextStyle mediumHeading = TextStyle(
   fontSize: 22,
