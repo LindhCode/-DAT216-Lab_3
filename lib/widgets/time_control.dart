@@ -36,6 +36,7 @@ class _TimeControlState extends State<TimeControl> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Image.asset(Assets.timeIcon, height: 16),
+              SizedBox(width: AppTheme.paddingSmall),
               Padding(
                 padding: const EdgeInsets.only(right: AppTheme.paddingLarge),
                 child: Text('${_price.round()} kr'),
