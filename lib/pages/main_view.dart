@@ -3,6 +3,7 @@ import 'package:lab2/widgets/control_panel.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingridient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
+import 'package:lab2/widgets/logo.dart';
 import 'package:lab2/widgets/price_control.dart';
 import 'package:lab2/widgets/recipe_area.dart';
 import 'package:lab2/widgets/recipe_detail.dart';
@@ -15,8 +16,9 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(children: [ControlPanel(),
-      RecipeArea(),]
+      body: Row(children: [
+        ControlPanel(),
+        RecipeArea(),]
       ),
     );
   }

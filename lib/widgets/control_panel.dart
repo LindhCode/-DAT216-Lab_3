@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lab2/widgets/difficulty_control.dart';
 import 'package:lab2/widgets/ingridient_control.dart';
 import 'package:lab2/widgets/kitchen_control.dart';
+import 'package:lab2/widgets/logo.dart';
 import 'package:lab2/widgets/price_control.dart';
 import 'package:lab2/widgets/time_control.dart';
 
@@ -22,7 +23,7 @@ class ControlPanel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('AlfAx Receptsök'),
+          const Logo(),
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
