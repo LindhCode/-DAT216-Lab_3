@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:lab2/app_theme.dart';
 import 'package:lab2/model/recipe_database/recipe_handler.dart';
 import 'package:lab2/util/difficulty.dart';
@@ -37,6 +38,7 @@ class _DifficulyControlState extends State<DifficulyControl> {
                 children: [
                   if (icons[i] != null) ...[
                     icons[i]!,
+                    SizedBox(width: AppTheme.paddingMedium),
                   ],
                   Text(labels[i])
                 ]
