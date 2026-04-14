@@ -14,9 +14,6 @@ class RecipeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var labels = Difficulty.labels;
-    var icons = Difficulty.icons;
-
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -44,15 +41,20 @@ class RecipeListItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
-                    SizedBox(height: AppTheme.paddingTiny),
+                    Spacer(),
                     Row(
                       children: [
-                        // Här vill jag att ikoner ska vara, om Difficulty är ex svår (index 3) så ska 3 kockhattar printas
-                        MainIngredient.icon(recipe.mainIngredient),
+                        if (MainIngredient.icon(recipe.mainIngredient) != null && Difficulty.icon(recipe.difficulty) != null) ...[
+                          MainIngredient.icon(recipe.mainIngredient)!,
+                          const SizedBox(width: AppTheme.paddingTiny),
+                          Difficulty.icon(recipe.difficulty, width: 48)!,
+                          const SizedBox(width: AppTheme.paddingTiny),
+                        ],
                         Text(recipe.time.toString()+ " minuter "),
+                        const SizedBox(width: AppTheme.paddingTiny),
                         Text(recipe.price.toString()+ "kr"),
 
-                        Image.asset(Assets.timeIcon, height: 16),
+                        
                       ],
                     ),
                   ],
@@ -67,7 +69,8 @@ class RecipeListItem extends StatelessWidget {
 
   Widget _image(Recipe recipe) {
   var flagImage = Cuisine.flag(recipe.cuisine, width: 24.0);
-    var square = ClipRect(
+    var square = ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
       child: Container(
         width: 104,
         height: 104,
