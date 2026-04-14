@@ -17,53 +17,58 @@ class RecipeListItem extends StatelessWidget {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: SizedBox(
-        height: 128,
-        child: Row(
-          children: [
-            SizedBox(width: AppTheme.paddingMediumSmall),
-            _image(recipe),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(AppTheme.paddingMediumSmall),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      recipe.name,
-                      style: AppTheme.mediumHeading,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: AppTheme.paddingTiny),
-                    Text(
-                      recipe.description,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                    Spacer(),
-                    Row(
-                      children: [
-                        if (MainIngredient.icon(recipe.mainIngredient) != null && Difficulty.icon(recipe.difficulty) != null) ...[
-                          MainIngredient.icon(recipe.mainIngredient)!,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        splashColor: Colors.lightGreenAccent.withAlpha(30),
+        onTap: onTap,
+        child: SizedBox(
+          height: 128,
+          child: Row(
+            children: [
+              SizedBox(width: AppTheme.paddingMediumSmall),
+              _image(recipe),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(AppTheme.paddingMediumSmall),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        recipe.name,
+                        style: AppTheme.mediumHeading,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: AppTheme.paddingTiny),
+                      Text(
+                        recipe.description,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                      Spacer(),
+                      Row(
+                        children: [
+                          if (MainIngredient.icon(recipe.mainIngredient) != null && Difficulty.icon(recipe.difficulty) != null) ...[
+                            MainIngredient.icon(recipe.mainIngredient)!,
+                            const SizedBox(width: AppTheme.paddingTiny),
+                            Difficulty.icon(recipe.difficulty, width: 48)!,
+                            const SizedBox(width: AppTheme.paddingTiny),
+                          ],
+                          Text(recipe.time.toString()+ " minuter "),
                           const SizedBox(width: AppTheme.paddingTiny),
-                          Difficulty.icon(recipe.difficulty, width: 48)!,
-                          const SizedBox(width: AppTheme.paddingTiny),
-                        ],
-                        Text(recipe.time.toString()+ " minuter "),
-                        const SizedBox(width: AppTheme.paddingTiny),
-                        Text(recipe.price.toString()+ "kr"),
+                          Text(recipe.price.toString()+ "kr"),
 
-                        
-                      ],
-                    ),
-                  ],
+                          
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 
