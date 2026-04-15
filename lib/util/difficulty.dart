@@ -27,6 +27,7 @@ class Difficulty {
       case hard:
         assetName = Assets.difficultyHard;
     }
+    
     return Image.asset(assetName, width: width);
   }
 }
