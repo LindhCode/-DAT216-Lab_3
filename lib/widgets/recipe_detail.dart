@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lab2/app_theme.dart';
 import 'package:lab2/model/recipe_database/recipe.dart';
 import 'package:lab2/ui_controller.dart';
+import 'package:lab2/util/cuisine.dart';
 import 'package:lab2/util/difficulty.dart';
 import 'package:lab2/util/main_ingredient.dart';
 import 'package:provider/provider.dart';
@@ -16,72 +17,76 @@ class RecipeDetail extends StatelessWidget {
     var uiController = Provider.of<UIController>(context, listen: false);
 
       return Card(
-        child: Row(
+        child: Column(
           children: [
-            Padding(
-
-              padding: EdgeInsets.all(AppTheme.paddingHuge),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  recipe.customImage(height: 240, width: 240),
-                  Text("Ingredienser", style: AppTheme.smallHeading,),
-                  SizedBox(height: AppTheme.paddingMediumSmall),
-                  Text(recipe.servings.toString() + " portioner"),
-                  for (int i=0 ; i< recipe.ingredients.length ; i++) 
-                    Row(
-                      children: [
-                        SizedBox(width: AppTheme.paddingMediumSmall,),
-                        Text(recipe.ingredients[i].toString()),
-                    ],)
-                  
-                  ],),
+            Row(
+              children: [
+                Spacer(),
+                IconButton(      
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                  uiController.deselectRecipe();
+                  },
+                ),
+              ]
             ),
-            Expanded(
-              child: 
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Padding(
-                  padding: EdgeInsets.all(AppTheme.paddingHuge),
+                  padding: EdgeInsets.all(AppTheme.paddingMedium),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      _image(recipe),
+                      SizedBox(height: AppTheme.paddingTiny),
+                      Text("Ingredienser", style: AppTheme.smallHeading,),
+                      SizedBox(height: AppTheme.paddingTiny),
+                      Text(recipe.servings.toString() + " portioner"),
+                      for (int i=0 ; i< recipe.ingredients.length ; i++) 
+                        Row(
+                          children: [
+                            SizedBox(width: AppTheme.paddingMediumSmall,),
+                            Text(recipe.ingredients[i].toString()),
+                        ],)
+                      
+                      ],
+                    ),
+                ),
+                Expanded(
+                  child: 
+                    Padding(
+                      padding: EdgeInsets.all(AppTheme.paddingMedium),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Spacer(),
-                          IconButton(      
-                            icon: Icon(Icons.close),
-                            onPressed: () {
-                            uiController.deselectRecipe();
-                            },
-                          ),
-                        ]
+                        Text(recipe.name, style: AppTheme.largeHeading),
+                        if (MainIngredient.icon(recipe.mainIngredient) != null && Difficulty.icon(recipe.difficulty) != null) ...[
+                          Row(
+                            children: [
+                              MainIngredient.icon(recipe.mainIngredient)!,
+                              const SizedBox(width: AppTheme.paddingTiny),
+                              Difficulty.icon(recipe.difficulty, width: 60)!,
+                              const SizedBox(width: AppTheme.paddingTiny),
+                              Text(recipe.time.toString()+ " minuter ", style: AppTheme.smallHeading),
+                              const SizedBox(width: AppTheme.paddingTiny),
+                              Text(recipe.price.toString()+ "kr", style: AppTheme.smallHeading),
+                            ],),
+                        SizedBox(height: AppTheme.paddingMediumSmall),
+                        Text(recipe.description),
+                        SizedBox(height: AppTheme.paddingLarge),
+                        Text("Tillagning", style: AppTheme.mediumHeading),
+                        SizedBox(height: AppTheme.paddingMediumSmall),
+                        Text(recipe.instruction)
+                        ],
+                        ],
                       ),
-                    Text(recipe.name, style: AppTheme.largeHeading),
-                    if (MainIngredient.icon(recipe.mainIngredient) != null && Difficulty.icon(recipe.difficulty) != null) ...[
-                      Row(
-                        children: [
-                          MainIngredient.icon(recipe.mainIngredient)!,
-                          const SizedBox(width: AppTheme.paddingTiny),
-                          Difficulty.icon(recipe.difficulty, width: 60)!,
-                          const SizedBox(width: AppTheme.paddingTiny),
-                          Text(recipe.time.toString()+ " minuter ", style: AppTheme.smallHeading),
-                          const SizedBox(width: AppTheme.paddingTiny),
-                          Text(recipe.price.toString()+ "kr", style: AppTheme.smallHeading),
-                        ],),
-                    SizedBox(height: AppTheme.paddingMediumSmall),
-                    Text(recipe.description),
-                    SizedBox(height: AppTheme.paddingLarge),
-                    Text("Tillagning", style: AppTheme.mediumHeading),
-                    SizedBox(height: AppTheme.paddingMediumSmall),
-                    Text(recipe.instruction)
-                    ],
-                    ],
-                  ),
+                    )
                 )
+              ],
             )
           ],
         )
-
-
       );
 
 
@@ -100,5 +105,23 @@ class RecipeDetail extends StatelessWidget {
       //],
     
     //);
+  }
+
+  Widget _image(Recipe recipe) {
+    var flagImage = Cuisine.flag(recipe.cuisine, width: 60.0);
+    var square = ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: Container(
+        width: 240,
+        height: 240,
+        child: FittedBox(fit: BoxFit.cover, child: recipe.image),
+      ),
+    );
+    return Stack(
+      children: [
+        square,
+        Positioned(bottom: 8, right: 8, child: flagImage!)
+      ],
+    );
   }
 }
