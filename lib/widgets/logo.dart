@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lab2/app_theme.dart';
 import 'package:lab2/constants/assets.dart';
 
 class Logo extends StatelessWidget {

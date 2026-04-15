@@ -11,6 +11,12 @@ import 'package:lab2/widgets/time_control.dart';
 class ControlPanel extends StatelessWidget {
   final double width;
 
+  static const TextStyle smallHeading = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.15,
+  );
+
   const ControlPanel({
     super.key,
     this.width = 320,
@@ -18,44 +24,59 @@ class ControlPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    return Container(
-      width: width,
-      color: const Color.fromARGB(255, 248, 249, 245),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Logo(),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              "Hitta ett recept som passar genom att ändra inställningarna nedan",
-              textAlign: TextAlign.left,
+    return Padding(
+      padding: const EdgeInsets.all(AppTheme.paddingMedium), 
+      child: Container(
+        width: width,
+        color: const Color.fromARGB(255, 248, 249, 245),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Logo(),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "\nHitta ett recept som passar genom att ändra inställningarna nedan",
+                textAlign: TextAlign.left,
+              ),
             ),
-          ),
-          Column(
-            children: const [
-              IngredientControl(),
-              KitchenControl(),
-            ],
-          ),
-          Column(
-            children: const [
-              SizedBox(child: Text("Svårighetsgrad", style: AppTheme.smallHeading,)),
-              DifficulyControl(),
-            ],
-          ),
-          Column(
-            children: const [
-              SizedBox(height: AppTheme.paddingMediumSmall),
-              Text("Maxpris", style: AppTheme.smallHeading,),
-              PriceControl(),
-              SizedBox(height: AppTheme.paddingMediumSmall),
-              Text("Maxtid", style: AppTheme.smallHeading,),
-              TimeControl(),
-            ],
-          ),
-        ],
+            Padding (
+              padding: const EdgeInsets.only(top: AppTheme.paddingMedium, bottom: AppTheme.paddingMedium, right: AppTheme.paddingLarge), 
+              child: Column(
+                children: const [
+                  IngredientControl(),
+                  KitchenControl(),
+                ],
+              ),
+            ),
+            Column(
+              children: const [
+                Row(
+                  children: [
+                    SizedBox(child: Text("Svårighetsgrad", style: AppTheme.smallHeading,)),
+                  ],
+                ),
+                DifficulyControl(),
+              ],
+            ),
+            Column(
+              children: const [
+                SizedBox(height: AppTheme.paddingMediumSmall),
+                Row(
+                  children: [
+                    Text("Maxpris", style: AppTheme.smallHeading,),
+                  ]
+                ),
+                PriceControl(),
+                SizedBox(height: AppTheme.paddingMediumSmall),
+                Row(children: [
+                  Text("Maxtid", style: AppTheme.smallHeading,),
+                ],),
+                TimeControl(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
