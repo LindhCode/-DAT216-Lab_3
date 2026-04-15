@@ -11,6 +11,12 @@ import 'package:lab2/widgets/time_control.dart';
 class ControlPanel extends StatelessWidget {
   final double width;
 
+  static const TextStyle smallHeading = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.15,
+  );
+
   const ControlPanel({
     super.key,
     this.width = 320,
@@ -30,12 +36,12 @@ class ControlPanel extends StatelessWidget {
             const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Hitta ett recept som passar genom att ändra inställningarna nedan",
+                "\nHitta ett recept som passar genom att ändra inställningarna nedan",
                 textAlign: TextAlign.left,
               ),
             ),
             Padding (
-              padding: const EdgeInsets.only(top: AppTheme.paddingMedium, bottom: AppTheme.paddingMedium), 
+              padding: const EdgeInsets.only(top: AppTheme.paddingMedium, bottom: AppTheme.paddingMedium, right: AppTheme.paddingLarge), 
               child: Column(
                 children: const [
                   IngredientControl(),
@@ -45,17 +51,27 @@ class ControlPanel extends StatelessWidget {
             ),
             Column(
               children: const [
-                SizedBox(child: Text("Svårighetsgrad", style: AppTheme.smallHeading,)),
+                Row(
+                  children: [
+                    SizedBox(child: Text("Svårighetsgrad", style: AppTheme.smallHeading,)),
+                  ],
+                ),
                 DifficulyControl(),
               ],
             ),
             Column(
               children: const [
                 SizedBox(height: AppTheme.paddingMediumSmall),
-                Text("Maxpris", style: AppTheme.smallHeading,),
+                Row(
+                  children: [
+                    Text("Maxpris", style: AppTheme.smallHeading,),
+                  ]
+                ),
                 PriceControl(),
                 SizedBox(height: AppTheme.paddingMediumSmall),
-                Text("Maxtid", style: AppTheme.smallHeading,),
+                Row(children: [
+                  Text("Maxtid", style: AppTheme.smallHeading,),
+                ],),
                 TimeControl(),
               ],
             ),
